@@ -1,0 +1,26 @@
+
+<%=link_to "Back to search page", home_index_path%>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Value</th>
+    <th>Address</th>
+    <th>Details</th>
+  </tr>
+  <%@results.each do |r|%>
+    <tr>
+      <td>
+        <%=r[:type]%>
+      </td>
+      <td>
+        <%=r[:value]%>
+      </td>
+      <td>
+        <%=r[:address]%>
+      </td>
+      <td>
+        <%=link_to "Click for  more  details", parse_home_details_parser_index_path(url: r[:url]), method: :post%>
+      </td>
+    </tr>
+  <%end%>
+</table>
