@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area: 
+  description: 
+  facts: 
+  zestimate: 
+  rent_zestimate: 
+  property_address_id: 1
+
+two:
+  area: 
+  description: 
+  facts: 
+  zestimate: 
+  rent_zestimate: 
+  property_address_id: 1

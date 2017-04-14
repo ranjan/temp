@@ -1,5 +1,7 @@
 
 <%=link_to "Back to search page", home_index_path%>
+<%#=debug @pa.properties%>
+<%#@results ||= []%>
 <table>
   <tr>
     <th>Type</th>
@@ -7,19 +9,19 @@
     <th>Address</th>
     <th>Details</th>
   </tr>
-  <%@results.each do |r|%>
+  <%@pa.properties.each do |r|%>
     <tr>
       <td>
-        <%=r[:type]%>
+        <%=r.property_type%>
       </td>
       <td>
-        <%=r[:value]%>
+        <%=r.price%>
       </td>
       <td>
-        <%=r[:address]%>
+        <%=r.address%>
       </td>
       <td>
-        <%=link_to "Click for  more  details", parse_home_details_parser_index_path(url: r[:url]), method: :post%>
+        <%=link_to "Click for  more  details", property_details_parser_index_path(url: r.url), method: :post%>
       </td>
     </tr>
   <%end%>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  value: 
+  address: 
+  url: 
+  property_address_id: 1
+
+two:
+  type: 
+  value: 
+  address: 
+  url: 
+  property_address_id: 1
