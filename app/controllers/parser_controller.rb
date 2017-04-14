@@ -1,10 +1,10 @@
 class ParserController < ApplicationController
   require 'mechanize'
-  require 'pry'	
+  require 'pry'
   ZilloUrl = 'https://www.zillow.com'.freeze
 
   def get_property_list
-  	address = params[:address]
+    address = params[:address]
     @pa = PropertyAddress.find_or_create_by(address: address)
     search_property(address) if @pa.properties.blank?
   end
@@ -12,7 +12,7 @@ class ParserController < ApplicationController
   def search_property(address)
     mechanize = Mechanize.new
     begin
-     page = mechanize.get(ZilloUrl)
+      page = mechanize.get(ZilloUrl)
     rescue
       raise 'Site Unreachable'.inspect
     end
@@ -28,17 +28,17 @@ class ParserController < ApplicationController
     result = []
     page.css('div.zsg-photo-card-content.zsg-aspect-ratio-content').each do |p|
       attrs = {}
-      attrs[:url] = p.css('a').map{|e| e["href"]}.reject(&:empty?).first
+      attrs[:url] = p.css('a').map { |e| e['href'] }.reject(&:empty?).first
       p.css('div.zsg-photo-card-caption').each do |pd|
-      	type = pd.at('h4.zsg-photo-card-spec > .zsg-photo-card-status')
+        type = pd.at('h4.zsg-photo-card-spec > .zsg-photo-card-status')
         price = pd.at('p.zsg-photo-card-spec > .zsg-photo-card-price')
-      	next unless (type and  price)
+        next unless type &&  price
         attrs[:property_type] = type.text
         attrs[:price] = price.text
         attrs[:address] = pd.at('p.zsg-photo-card-spec > .zsg-photo-card-address').text
         result << attrs
       end
-    end    
+    end
     @pa.properties.build(result)
     @pa.save
   end
@@ -47,7 +47,7 @@ class ParserController < ApplicationController
     url = ZilloUrl + params[:url]
     @property = Property.find_by(url: params[:url])
     parse_home_details(url) unless @property.property_detail
-  end  
+  end
 
   def parse_home_details(url)
     mechanize = Mechanize.new
@@ -59,7 +59,7 @@ class ParserController < ApplicationController
     facts = {}
     page.css('div.hdp-fact-ataglance-container >  div.zsg-media-bd').each do |p|
       key = p.at('p.hdp-fact-ataglance-heading').text
-      value = p.at('div.hdp-fact-ataglance-value').text 
+      value = p.at('div.hdp-fact-ataglance-value').text
       facts[key] = value
     end
     detail[:facts] = facts

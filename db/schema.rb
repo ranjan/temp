@@ -10,33 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414054017) do
-
-  create_table "properties", force: :cascade do |t|
-    t.string   "property_type"
-    t.string   "price"
-    t.string   "address"
-    t.string   "url"
-    t.integer  "property_address_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+ActiveRecord::Schema.define(version: 20_170_414_054_017) do
+  create_table 'properties', force: :cascade do |t|
+    t.string   'property_type'
+    t.string   'price'
+    t.string   'address'
+    t.string   'url'
+    t.integer  'property_address_id'
+    t.datetime 'created_at',          null: false
+    t.datetime 'updated_at',          null: false
   end
 
-  create_table "property_addresses", force: :cascade do |t|
-    t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'property_addresses', force: :cascade do |t|
+    t.string   'address'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "property_details", force: :cascade do |t|
-    t.string   "area"
-    t.string   "address"
-    t.text     "description"
-    t.string   "facts"
-    t.string   "market_value"
-    t.integer  "property_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table 'property_details', force: :cascade do |t|
+    t.string   'area'
+    t.string   'address'
+    t.text     'description'
+    t.string   'facts'
+    t.string   'market_value'
+    t.integer  'property_id'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
   end
-
 end
