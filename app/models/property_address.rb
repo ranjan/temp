@@ -1,3 +1,3 @@
 class PropertyAddress < ApplicationRecord
-  has_many :properties
+  has_many :properties, dependent: :destroy
 end
