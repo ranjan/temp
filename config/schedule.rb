@@ -13,7 +13,6 @@
 #   rake "some:great:rake:task"
 # end
 #
- every 1.day, :at => '12:30 am' do
-   rake "property:prune_old_records"
- end
- 
+every 1.day, at: '12:30 am' do
+  rake 'property:prune_old_records'
+end

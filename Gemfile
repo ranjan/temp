@@ -34,7 +34,7 @@ gem 'nokogiri'
 
 gem 'mechanize'
 
-gem 'whenever', :require => false
+gem 'whenever', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
